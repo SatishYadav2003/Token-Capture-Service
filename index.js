@@ -39,12 +39,10 @@ async function initBrowser() {
 
 const app = express();
 
-// Health check
 app.get("/", (req, res) => {
   res.json({ status: "ok", browserReady });
 });
 
-// Get fresh captcha token
 app.get("/token", async (req, res) => {
   if (!browserReady || !page) {
     return res.status(503).json({ error: "Browser not ready yet" });
@@ -64,10 +62,9 @@ app.get("/token", async (req, res) => {
   }
 });
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 10000;
 
-// Start server FIRST so Render detects the port, then init browser in background
-app.listen(PORT,"0.0.0.0", () => {
+app.listen(PORT, "0.0.0.0", () => {
   console.log(`Captcha service running on port ${PORT}`);
   initBrowser().catch((err) => {
     console.error("Failed to init browser:", err.message);
