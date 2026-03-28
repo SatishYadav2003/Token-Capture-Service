@@ -1,3 +1,4 @@
+import "dotenv/config";
 import express from "express";
 import { chromium } from "playwright-extra";
 import StealthPlugin from "puppeteer-extra-plugin-stealth";

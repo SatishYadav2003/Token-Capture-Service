@@ -13,7 +13,9 @@ RUN npx playwright install chromium
 
 COPY . .
 
-EXPOSE 3000
+EXPOSE 10000
+
+ENV PORT=10000
 
 # xvfb-run creates a virtual display so headed browser works without a real screen
 CMD ["xvfb-run", "--auto-servernum", "--server-args=-screen 0 1920x1080x24", "node", "index.js"]
