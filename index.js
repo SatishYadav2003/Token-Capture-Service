@@ -67,7 +67,7 @@ app.get("/token", async (req, res) => {
 const PORT = process.env.PORT || 3000;
 
 // Start server FIRST so Render detects the port, then init browser in background
-app.listen(PORT, () => {
+app.listen(PORT,"0.0.0.0", () => {
   console.log(`Captcha service running on port ${PORT}`);
   initBrowser().catch((err) => {
     console.error("Failed to init browser:", err.message);
